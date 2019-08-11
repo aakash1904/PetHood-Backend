@@ -7,7 +7,7 @@ var router  = express.Router();
     router.get('/register' ,(req,res) => {
         res.send({message : "Register is working"})
     })
-    
+
     router.post('/register', (req,res) =>{
         var userData = req.body; 
     
@@ -15,7 +15,7 @@ var router  = express.Router();
     
         user.save((err,newUser) => {
             if(err){
-                return res.status(500).send({ message : "Error Saving user"});
+                return res.status(400).send({ message : err});
             }
 
             var payload = { sub : newUser._id };

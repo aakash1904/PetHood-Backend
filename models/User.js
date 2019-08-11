@@ -3,10 +3,23 @@ var bcrypt = require('bcrypt-nodejs');
 
 
 var userSchema = new mongoose.Schema({
-    name : String,
-    email : String,
-    password : String,
-    mobile_number : Number
+    name : {
+        type : String,
+        required: [true,"Name is Required"]
+    },
+    email : {
+        type : String,
+        unique : true,
+        required: [true,"Email is Required"]
+    },
+    password : {
+        type : String,
+        required: [true,"Password is Required"]
+    },
+    mobile_number :  {
+        type : Number,
+        required: false
+    },
 });
 
 userSchema.pre('save' , function(next){
@@ -23,4 +36,5 @@ userSchema.pre('save' , function(next){
     })    
 })
 
+mongoose.set('useCreateIndex', true)
 module.exports = mongoose.model('User', userSchema);
