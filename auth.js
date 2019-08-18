@@ -24,7 +24,7 @@ var router  = express.Router();
     
             console.log(token);
     
-            res.status(200).send({token});
+            res.status(200).send({token , name : user.name});
            
         });
     });
@@ -49,7 +49,7 @@ var router  = express.Router();
     
             console.log(token);
     
-            res.status(200).send({token});
+            res.status(200).send({token , name : user.name});
         })
     })
 

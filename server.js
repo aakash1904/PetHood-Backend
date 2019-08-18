@@ -30,12 +30,11 @@ app.get('/users' ,async (req,res) =>{
 
 });
 
-
 app.get('/profile/:id',async (req,res) =>{
     
     try {
         
-    var user = await User.findById(req.params.id ,'-password -__v' );
+    var user = await User.findById(req.params.id ,'-password -mobile_number -__v' );
 
     res.send(user);
 
